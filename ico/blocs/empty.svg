@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="50"
+   height="50"
+   viewBox="0 0 13.229166 13.229167"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="empty.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#222222"
+     bordercolor="#aabbcc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#222222"
+     inkscape:document-units="px"
+     inkscape:zoom="7.790952"
+     inkscape:cx="31.510912"
+     inkscape:cy="33.821284"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#f8bb6a;stroke-width:1.32291665;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       width="9.260417"
+       height="7.9375"
+       x="1.984375"
+       y="2.6458333"
+       ry="1.984375" />
+    <path
+       d="m 6.6145832,4.2333333 c -0.3298031,0 -0.5953124,0.2655094 -0.5953124,0.5953125 v 1.190625 h -1.190625 c -0.3298031,0 -0.5953125,0.2655093 -0.5953125,0.5953124 0,0.3298032 0.2655094,0.5953125 0.5953125,0.5953125 h 1.190625 v 1.190625 c 0,0.3298031 0.2655093,0.5953125 0.5953124,0.5953125 0.3298032,0 0.5953125,-0.2655094 0.5953125,-0.5953125 v -1.190625 h 1.190625 c 0.3298031,0 0.5953125,-0.2655093 0.5953125,-0.5953125 0,-0.3298031 -0.2655094,-0.5953124 -0.5953125,-0.5953124 h -1.190625 v -1.190625 c 0,-0.3298031 -0.2655093,-0.5953125 -0.5953125,-0.5953125 z"
+       style="stroke:#f8bb6a;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;fill:#f8bb6a;fill-opacity:1"
+       id="path3" />
+  </g>
+</svg>
