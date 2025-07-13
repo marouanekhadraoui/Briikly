@@ -1,0 +1,34 @@
+body full-page top-bar {
+    grid-area: 1 / 1 / 2 / 4;
+    display: flex;
+    box-sizing: border-box;
+    padding: 8px 10px 0 8px;
+    gap: 10px;
+    > * {
+        border-radius: var(--br-r0);
+    }
+    logo {
+        width: 160px;
+        display: grid;
+        place-items: center;
+        img {
+            width: 150px;
+            scale: 0.8;
+        }
+    }
+    setting-btn {
+        width: 52px;
+    }
+    show-as {
+        width: 130px;
+    }
+    view-as {
+        width: 200px;
+    }
+    export-btn {
+        width: 52px;
+    }
+    ready-use {
+        width: 130px;
+    }
+}

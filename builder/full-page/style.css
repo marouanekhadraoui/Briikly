@@ -1,0 +1,10 @@
+
+
+body full-page {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: var(--top-t) 1fr var(--btm-t) / var(--lft-t) 1fr var(--rgh-t);
+    gap: var(--gap0);
+    background: var(--bg0);
+}

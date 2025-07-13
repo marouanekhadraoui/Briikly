@@ -1,0 +1,190 @@
+body > functions > pager {
+    back-circles {
+        cir1 {
+
+        }
+        cir2 {
+
+        }
+        cir3 {
+
+        }
+    }
+    add-page {
+        width: 290px;
+        height: 170px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 20px;
+        padding: 10px 0;
+
+        txt {
+            font-family: system-ui;
+            color: #234b;
+            font-size: 25px;
+            text-align: center;
+            border-bottom: 1px solid #fff7;
+            width: 80%;
+            user-select: none;
+            -webkit-user-drag: none;
+            cursor: context-menu;               
+        }
+        set-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            
+            input {
+                width: 160px;
+                height: 30px;
+                font-size: 23px;
+                color: #234b;
+                font-family: system-ui;
+                padding: 3px 10px;
+                box-sizing: border-box;
+            }
+            line {
+                width: 160px;
+                height: 4px;
+                position: absolute;
+                background: linear-gradient(45deg, #f9955c, #fe2233);
+                border-radius: 5px;
+                left: 0;
+                bottom: 0;
+            }
+            valid {
+                width: 30px;
+                height: 40px;
+                display: grid;
+                place-items: end center;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        bl-or-pg {
+            display: flex;
+
+            img {
+                width: 30px;
+            }
+            pb {
+                display: grid;
+                place-items: center;
+                box-sizing: border-box;
+                padding: 5px;
+                margin: 0 10px;
+                width: 60px;
+                border-radius: 30px;
+                --sha-vb1: #e7e1e1d4;
+                --bg0: #ddd7;
+
+                back {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 30px;
+                    background: #0a7effa6;
+                    box-shadow: inset 3px 3px 4px #0006;
+                    padding: 3px;
+                    box-sizing: border-box;
+                    transition: .25s;
+
+                    cir {
+                        width: 20px;
+                        height: 20px;
+                        background: #dbdbdb;
+                        border-radius: 20px;
+                        box-shadow: inset -3px -3px 6px #6667;
+                        transition: .25s;
+                        left: 0;
+                    }
+                }
+            }
+            what {
+                width: 60px;
+                cursor: context-menu;
+                user-select: none;
+                -webkit-user-drag: none;
+                display: grid;
+                place-items: center;
+
+                > * {
+                    position: absolute;
+                    font-family: system-ui;
+                    color: #4e99ef;
+                    font-weight: 600;
+                    transition: .35s;
+                    &.b {
+                        opacity: 0;
+                        color: #1aa599;
+                    }
+                }
+            }
+            &.b {
+                cir {
+                    left: 23.5px;
+                }
+                back {
+                    background: #22c4b5eb;
+                }
+                what {
+                    * { opacity: 0 }
+                    .b { opacity: 1 }
+                }
+            }
+        }
+    }
+    pages {
+        max-height: 300px;
+        width: 290px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 10px;
+
+        page-scroll {
+            width: 100%;
+            max-height: 280px;
+            overflow: hidden auto;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-track {
+                background: #0000;
+            }
+            &::-webkit-scrollbar-thumb {
+                border-radius: 8px;
+                background: #0233;
+            }
+            page-list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                box-sizing: border-box;
+                gap: 7px;
+                
+                page {
+                    width: 100%;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 10px;
+                    box-sizing: border-box;
+                    font-size: 20px;
+                    font-family: sans-serif;
+                    color: #234b;
+                    cursor: pointer;
+                    &:hover {
+                        background: #ddd6;
+                    }
+                }
+            }
+        }
+
+    }
+}

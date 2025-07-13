@@ -1,0 +1,237 @@
+body full-page details-panel {
+    grid-area: 2 / 3 / 3 / 4;
+    z-index: 1;
+    border-radius: var(--br-r0) 0 0 var(--br-r0);
+    h-line {
+        display: flex;
+        height: 60px;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 10px;
+        gap: 5px;
+
+        > * {
+            height: 40px;
+            width: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .25s;
+            &:hover {
+                background: #fff6;
+            }
+
+            img {
+                height: 30px;
+            }
+        }
+    }
+    b-box {
+        width: calc(100% - 20px);
+        height: calc(100% - 70px);
+        border-radius: 10px;
+        margin: 0 auto;
+        box-shadow:
+            inset 2px 2px 5px 1px #0002,
+            inset -2px -2px 5px 0px #0001,
+            inset -1px -1px 2px 1px #fff,
+            3px 3px 3px 0 #d5d8e0d6;
+
+        sho-just {
+            mask-image: linear-gradient( 90deg, #0000, #000 25px, #000 calc(100% - 25px), #0000 );
+            > * {
+                padding: 10px 0;
+                box-sizing: border-box;
+            }
+        }
+        pr-box {
+            line {
+
+            }
+            sect {
+                box-sizing: border-box;
+                padding: 0 20px;
+                font-family: sans-serif;
+                color: #234;
+                width: max-content;
+                &:hover t-c::after {
+                    width: 100%;
+                }
+
+                t-c {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    cursor: context-menu;
+
+                    &::after {
+                        content: '';
+                        width: 0;
+                        height: .5px;
+                        background: #234;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        transition: .3s;
+                    }
+                    img {
+                        width: 30px;
+                        -webkit-user-drag: none;
+                    }
+                    tit {
+                        font-size: 20px;
+                    }
+                }
+                block-levels {
+                    display: flex;
+                    gap: 5px;
+                    margin-bottom: 8px;
+
+                    n {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 10px;
+                        display: grid;
+                        place-items: center;
+                        font-size: 13px;
+                        cursor: pointer;
+                        user-select: none;
+                        -webkit-user-drag: none;
+                        transition: .2s;
+                        &:not(.set-neumorfe1-off):hover {
+                            background: #fff7;
+                        }
+                    }
+                }
+                blocks {
+
+                    block {
+                        margin-left: 10px;
+
+                        set {
+                            tit {
+
+                            }
+                            values {
+                                margin: 5px;
+                                display: grid;
+                                gap: 5px;
+
+                                value {
+                                    display: flex;
+                                    background: #fff9;
+                                    height: 26px;
+                                    align-items: center;
+                                    padding: 0 10px;
+                                    gap: 7px;
+                                    border-radius: 10px;
+                                    width: max-content;
+                                    max-width: 200px;
+                                    
+                                    key, unit {
+                                        cursor: context-menu;
+                                        user-select: none;
+                                        -webkit-user-drag: none;
+                                    }
+                                    unit {
+                                        cursor: pointer;
+                                    }
+                                    &[type=quantity] input {
+                                        text-align: end;
+                                        height: 20px;
+                                        border-left: 1px solid #2345;
+                                        border-right: 1px solid #2345;
+                                        padding: 0 5px;
+                                        color: #345;
+                                        width: 100%;
+                                    }
+                                    &[type=v1-v2] {
+                                        height: 36px;
+                                        display: grid;
+                                        grid-template: 1fr / 1fr 46px 1fr;
+                                        place-items: center;
+                                        v1-v2 {
+                                            width: 46px;
+                                            height: 26px;
+                                            background: #1e81beab;
+                                            border-radius: 14px;
+                                            display: flex;
+                                            align-items: center;
+                                            box-sizing: border-box;
+                                            padding: 3px;
+                                            cir {
+                                                width: 20px;
+                                                height: 20px;
+                                                background: #fff;
+                                                border-radius: 20px;
+                                                transition: .2s;
+                                                left: 0;
+                                            }
+                                        }
+                                        &.v2 cir { left: 20px; }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* > * {
+                padding: 0 20px 10px;
+                box-sizing: border-box;
+                font-family: sans-serif;
+                color: #345;
+                tit {
+                    font-size: 20px;
+                    width: 140px;
+                    text-align: center;
+                    &:after {
+                        content: '';
+                        width: 0%;
+                        height: 1px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        background: #345;
+                        transition: .3s;
+                        user-select: none;
+                        -webkit-user-drag: none;
+                        cursor: context-menu;
+                    }
+                }
+                &:hover tit::after {
+                    width: 100%;
+                }
+            }
+            pos-siz {
+                data-block {
+                    display: grid;
+                    grid-template: 1fr 1fr / 1fr 1fr;
+                    margin-top: 10px;
+
+                    set {
+
+
+                        input {
+                            font-size: 13px;
+                            font-family: system-ui;
+                            border: 0;
+                            outline: none;
+                            padding: 0 0 0px 5px;
+                            width: 95px;
+                            height: 25px;
+                            background: #0000;
+                            border-bottom: 1px solid #3459;
+                            color: #345;
+                        }
+                    }
+                }
+            } */
+        }
+    }
+}

@@ -1,0 +1,70 @@
+body full-page view {
+    grid-area: 2 / 2 / 3 / 3;
+    z-index: 1;
+    display: grid;
+    grid-template: 30px 1fr / 1fr;
+    gap: var(--edge-vb);
+    box-sizing: border-box;
+
+    prjs-bar {
+        border-radius:30px;
+    }
+    main-box {
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 5px;
+
+        &.no {
+            page-manager {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        page-manager {
+            width: 100%;
+            height: 100%;
+            background: #e1e4ed;
+            opacity: 1;
+            transition: .35s;
+            display: block;
+            pointer-events: auto;
+            z-index: 1;
+
+            > * {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            draw-maker {
+                pointer-events: none;
+            }
+            page-view {
+                background: #fff;
+            }
+        }
+        add-block-btn {
+            display: grid;
+            position: absolute;
+            place-items: center;
+            cursor: pointer;
+            width: calc(100% - 12px);
+            height: calc(100% - 12px);
+            transition: .35s;
+            z-index: 0;
+            top: 0;
+
+            btn {
+                width: 60px;
+                height: 60px;
+                border-radius: 60px;
+                display: grid;
+                place-items: center;
+
+                img {
+                    scale: 0.8;
+                }
+            }
+        }
+    }
+}

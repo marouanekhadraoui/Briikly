@@ -5,24 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Briikly | Work</title>
+    
+    <!-- Css -->
+
+    <link rel="stylesheet" href="./builder/style.css"></link>
+    
+    
+    <link rel="stylesheet" href="./builder/functions/style.css"></link>
+    
+    <link rel="stylesheet" href="./builder/full-page/style.css">
+    <link rel="stylesheet" href="./builder/full-page/toolbox/style.css"></link>
+    <link rel="stylesheet" href="./builder/full-page/view/style.css"></link>
+    <link rel="stylesheet" href="./builder/full-page/details-panel/style.css"></link>
+    <link rel="stylesheet" href="./builder/full-page/status-bar/style.css"></link>
+    <link rel="stylesheet" href="./builder/full-page/top-bar/style.css"></link>
+
     <link rel="stylesheet" href="index.css">
+
+
+
+    
+    <!-- Css -->
+    
+    
     <link rel="shortcut icon" href="./ico/logo0.svg" type="image/x-icon">
 </head>
 <body>
     <functions>
+        <description></description>
         <pager class="hide">
-            <add-text-block class="set-glsmorfe0">
-                <txt>Text Block Settings</txt>
+            <back-circles>
+                <cir1></cir1>
+                <cir2></cir2>
+                <cir3></cir3>
+            </back-circles>
+            <add-page class="set-glsmorfe0">
+                <txt>Create</txt>
                 <set-name>
-                    <label>Text:</label>
-                    <input type="text" id="text-content" placeholder="Enter your text">
-                    <label>Color:</label>
-                    <input type="color" id="text-color">
-                    <label>Font Size:</label>
-                    <input type="number" id="text-size" placeholder="16" min="1">
+                    <input type="text">
                     <line></line>
                     <valid>
-                        <img src="./ico/main/add.svg">
+                        <img src="./ico/main/add-btn1.svg">
                     </valid>
                 </set-name>
                 <bl-or-pg>
@@ -74,9 +97,10 @@
                     </svg>
                 </go-up>
                 <tool-list>
-                    <!-- <tool-btn class="set-neumorfe1-off" fn="new page">
-                        <img src="./ico/page/newpage.svg">
-                    </tool-btn>
+                    <!-- 
+                        <tool-btn class="set-neumorfe1-off" fn="new page">
+                            <img src="./ico/page/newpage.svg">
+                        </tool-btn>
                     <tool-btn class="set-neumorfe1-off" fn="new block">
                         <img src="./ico/page/newblock.svg">
                     </tool-btn>
@@ -167,7 +191,7 @@
                 </go-dn>
             </tool-show>
         </tool-box>
-        <view-box>
+        <view>
             <prjs-bar class="set-neumorfe0"></prjs-bar>
             <main-box class="set-neumorfe0 no">
                 <page-manager>
@@ -184,7 +208,7 @@
                     </btn>
                 </add-block-btn>
             </main-box>
-        </view-box>
+        </view>
         <details-panel class="set-neumorfe0">
             <h-line>
                 <props>
@@ -308,6 +332,15 @@
 
 
 
-    <script src="main.js"></script>
+    <script src="./Engine/base.js"></script>
+    <script src="./Engine/zero.js"></script>
+    <script src="./Engine/index.js"></script>
+
+    <script src="./builder/full-page/toolbox/index.js"></script>
+
+
+
+
+    <script src="index.js"></script>
 </body>
 </html>
