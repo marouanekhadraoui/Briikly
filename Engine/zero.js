@@ -20,7 +20,11 @@ class Zero extends Set {
             this.props = props
         }
     }
-
+    static Toggle = class Toggle {
+        constructor ( ...props ) {
+            this.props = [ ...new Set ( props ) ]
+        }
+    }
 
 
     static def ( elems, document = zro.document ) {
@@ -166,6 +170,7 @@ class Zero extends Set {
     }
     class ( v, t = "set", i ) {
         if ( t === "set" || t === true ) {
+            v = Base.toArr ( v );
             if ( i === undefined ) {
                 this.each ( e => e.classList.add ( v ) );
             }
@@ -173,10 +178,11 @@ class Zero extends Set {
                 if ( typeof i === "number" ) {
                     i = [ i ];
                 }
-                i.forEach ( ii => this.free [ ii ].classList.add ( v ) );
+                i.forEach ( ii => this.free [ ii ] instanceof Element ? this.free [ ii ].classList.add ( v ) : null );
             }
         }
         else if ( t === "rem" || t === false ) {
+            v = Base.toArr ( v );
             if ( i === undefined ) {
                 this.each ( e => e.classList.remove ( v ) );
             }
@@ -184,18 +190,19 @@ class Zero extends Set {
                 if ( typeof i === "number" ) {
                     i = [ i ];
                 }
-                i.forEach ( ii => this.free [ ii ].classList.remove ( v ) );
+                i.forEach ( ii => this.free [ ii ] instanceof Element ? this.free [ ii ].classList.remove ( v ) : null );
             }
         }
         else if ( t === "tog" ) {
+            v = Base.toArr ( v );
             if ( i === undefined ) {
-                this.each ( e => e.classList.toggle ( v ) );
+                this.each ( e => v.forEach ( t => e.classList.toggle ( t ) ) );
             }
             else {
                 if ( typeof i === "number" ) {
                     i = [ i ];
                 }
-                i.forEach ( ii => this.free [ ii ].classList.toggle ( v ) );
+                i.forEach ( ii => v.forEach ( t => this.free [ ii ] instanceof Element ? this.free [ ii ].classList.toggle ( t ) : null ) );
             }
         }
         else if ( t === "get" ) {
@@ -204,7 +211,7 @@ class Zero extends Set {
         }
         else {
             i = i || 0;
-            return this.free [ i ].classList.contains ( v );
+            return this.free [ i ] instanceof Element ? this.free [ i ].classList.contains ( v ) : null;
         }
         return this;
     }

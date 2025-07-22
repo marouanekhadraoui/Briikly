@@ -8,16 +8,11 @@ body > functions {
     transition: .3s;
     background: #0000;
 
-    &.show {
-        opacity: 1;
-        pointer-events: auto;
+    &.show0 {
         background: #0003;
     }
-    &.center {
-        display: grid;
-        place-items: center;
-    } 
-    > *.hide {
-        display: none;
+
+    > * {
+        position: absolute;
     }
 }

@@ -4,8 +4,24 @@ let engine = new class Engine {
         build ( name, fn ) {
             Builder.Builds.set ( name, fn );
         }
-        add ( name, ...params ) {
-            return Builder.Builds.get ( name ) ( ...params );
+        /**
+         * 
+         * @returns {Zero | HTMLElement>}
+         */
+        add ( name, params ) {
+            if ( typeof params !== "object" && params != null ) {
+                throw new Error ( "params must be an object" );
+            }
+            return Builder.Builds.get ( name ) ( params ?? {} );
+        }
+    }
+
+    static Error = class Error {
+        constructor ( e ) {
+            this.e = e;
+        }
+        throw () {
+            throw this.e;
         }
     }
 
@@ -20,29 +36,46 @@ let engine = new class Engine {
     constructor () {
         this.builder = new Engine.Builder;
         
-        Base.ice ( this, { builder: this.builder } );
+        Base.ice ( this, { builder: this.builder, Error: Engine.Error } );
     }
 
 
-    def_fn ( name, fn, props ) {
+    define ( name, fn, props ) {
         if ( typeof fn == "function" )
             Engine.fns.set ( name, [ fn, props ] );
         else 
             console.error ( "Invalid type, Expected function." );
     }
-    ref_fn ( name, fn, props ) {
+    reDefine ( name, fn, props ) {
         if ( typeof fn !== "function" ) fn = null;
         if ( typeof props !== "object" ) props = null;
         let old = Engine.fns.get ( name );
         Engine.fns.set ( name, [ fn ?? old, props ?? old ] );
     }
-    rem_fn ( name ) {
+    delete ( name ) {
         return Engine.fns.delete ( name );
     }
-    command ( name, ...args ) {
+    app ( name, ...args ) {
         let fn = Engine.fns.get( name );
         if ( typeof fn ?.[ 0 ] === "function" ) {
             return fn [ 0 ] ( ...( fn ?.[ 1 ]?.before || [] ), ...args, ...( fn ?.[ 1 ]?.after || [] ) );
+        }
+        else {
+            throw new Error ( `Application (${ name }) not found` );
+        }
+    }
+    try ( name, ...args ) { 
+        try {
+            let fn = Engine.fns.get( name );
+            if ( typeof fn ?.[ 0 ] === "function" ) {
+                return fn [ 0 ] ( ...( fn ?.[ 1 ]?.before || [] ), ...args, ...( fn ?.[ 1 ]?.after || [] ) );
+            }
+            else {
+                throw new Error ( `Application (${ name }) not found` );
+            }
+        }
+        catch ( e ) {
+            return new Engine.Error ( e );
         }
     }
     apply ( name, ...args ) {
@@ -55,6 +88,7 @@ let engine = new class Engine {
     setElem ( name, elem ) {
         Engine.elems.set ( name, zro ( elem ) );
     }
+
     elem ( name ) {
         return Engine.elems.get ( name );
     }

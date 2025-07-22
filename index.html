@@ -12,6 +12,7 @@
     
     
     <link rel="stylesheet" href="./builder/functions/style.css"></link>
+    <link rel="stylesheet" href="./builder/functions/pager/style.css"></link>
     
     <link rel="stylesheet" href="./builder/full-page/style.css">
     <link rel="stylesheet" href="./builder/full-page/toolbox/style.css"></link>
@@ -19,9 +20,6 @@
     <link rel="stylesheet" href="./builder/full-page/details-panel/style.css"></link>
     <link rel="stylesheet" href="./builder/full-page/status-bar/style.css"></link>
     <link rel="stylesheet" href="./builder/full-page/top-bar/style.css"></link>
-
-    <link rel="stylesheet" href="index.css">
-
 
 
     
@@ -32,8 +30,12 @@
 </head>
 <body>
     <functions>
-        <description></description>
-        <pager class="hide">
+        <description>
+            <on-drag>
+                
+            </on-drag>
+        </description>
+        <pager>
             <back-circles>
                 <cir1></cir1>
                 <cir2></cir2>
@@ -44,9 +46,6 @@
                 <set-name>
                     <input type="text">
                     <line></line>
-                    <valid>
-                        <img src="./ico/main/add-btn1.svg">
-                    </valid>
                 </set-name>
                 <bl-or-pg>
                     <img src="./ico/page/newpage-blue.svg">
@@ -66,28 +65,67 @@
             <pages class="set-glsmorfe0">
                 <page-scroll>
                     <page-list>
-                        <page>name1</page>
-                        <page>name2</page>
-                        <page>name3</page>
-                        <page>name4</page>
-                        <page>name5</page>
-                        <page>name6</page>
-                        <page>name1</page>
-                        <page>name2</page>
-                        <page>name3</page>
-                        <page>name4</page>
-                        <page>name5</page>
-                        <page>name6</page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
+                        <page>
+                            <img src="">
+                        </page>
                     </page-list>
                 </page-scroll>
             </pages>
+            <controls>
+                <ops class="set-glsmorfe0">
+                    <exit title="exit"></exit>
+                    <valid title="create"></valid>
+                    <import title="import"></import>
+                </ops>
+                <up-dn class="set-glsmorfe0">
+                    <up>
+                        <svg>
+                            <path d="M 8 19 l 7 -8 7 8"></path>
+                        </svg>
+                    </up>
+                    <ln></ln>
+                    <dn>
+                        <svg>
+                            <path d="M 8 12 l 7 8 7 -8"></path>
+                        </svg>
+                    </dn>
+                </up-dn>
+            </controls>
         </pager>
     </functions>
-    <mouse-sleep>
-        <on-drag>
-
-        </on-drag>
-    </mouse-sleep>
     <full-page>
         <tool-box class="set-neumorfe0">
             <tool-show>
@@ -336,10 +374,12 @@
     <script src="./Engine/zero.js"></script>
     <script src="./Engine/index.js"></script>
 
+    <script src="./builder/functions/index.js"></script>
+    <script src="./builder/functions/pager/index.js"></script>
+    
+    
+    
     <script src="./builder/full-page/toolbox/index.js"></script>
-
-
-
 
     <script src="index.js"></script>
 </body>

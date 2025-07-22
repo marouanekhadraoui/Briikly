@@ -3,28 +3,29 @@
 engine.setElem ( "toollist", "body full-page tool-box tool-show tool-list" );
 
 // to build block builder
-engine.builder.build ( "block-btn", ( { ico, drag } ) => {
+engine.builder.build ( "block-btn", ( { ico, drag, click } ) => {
     let block = engine.elem ( "toollist" ).addH ( `
-        <tool-btn>
+        <tool-btn state="0">
             <img src="${ ico }">
         </tool-btn>
     `);
-    let clicks = 0;
     block.on ( "click", function () {
-        if ( clicks == 0 ) {
-            this.class ( "set-neumorfe1-off" );
-            //builder.add ( "toolbox-comment", this, "New Page", "Create a new, customizable, and interactive landing page." )
-            clicks++;
+        let state = this.attr ( zro.get ( "state" ) ) [ 0 ] [ 0 ];
+        console.log(`set:${ [ "off", "on", "none" ] [ state ] }:tool`)
+        engine.app ( `set:${ [ "off", "on", "none" ] [ state ] }:tool`, this );
+        if ( state == 1 ) {
+            click ();
         }
-        else if ( clicks == 1 ) {
-            this.class ( "set-neumorfe1-on" ).class ( "set-neumorfe1-off", false );
-            //Engine.command ( "open-pager" );
-            clicks++;
-        }
-        else {
-            this.class ( "set-neumorfe1-on", false );
-            clicks = 0;
-        }
+        
     } ).on ( "dragstart", drag );
     return block;
+} );
+engine.define ( "set:on:tool", function ( block ) {
+    zro ( block ).class ( "set-neumorfe1-on" ).class ( "set-neumorfe1-off", false ).attr ( { state: 2 } );;
+} );
+engine.define ( "set:off:tool", function ( block ) {
+    zro ( block ).class ( "set-neumorfe1-on", false ).class ( "set-neumorfe1-off" ).attr ( { state: 1 } );;
+})
+engine.define ( "set:none:tool", function ( block ) {
+    zro ( block ).class ( "set-neumorfe1-on", false ).class ( "set-neumorfe1-off", false ).attr ( { state: 0 } );
 } );
