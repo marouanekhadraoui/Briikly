@@ -3,18 +3,22 @@
     --top-t: 60px;
     --lft-t: 60px;
     --rgh-t: 300px;
-    --btm-t: 25px;
 
-    --gap0: 10px;
+    --stlc0: #1883d9; /* struct line color 0 */
+
+    --gap0: 16px;
     --bg0: #e1e4ed;
     --bg1: #eee3;
     --bl0: 10px;
-    --br-r0: 17px;
+    --br-r0: 20px;
     /* view-box */
     --sha-vb0: #3332;
     --sha-vb1: #fff9;
     --sha-vb2: #fff6;
-    --edge-vb: 7px;
+    --edge-vb: 8px;
+
+    /* details panel */
+    --tx-col0: #616182;
 }
 /** globals */
 .set-neumorfe0 {

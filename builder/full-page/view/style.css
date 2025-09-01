@@ -2,24 +2,86 @@ body full-page view {
     grid-area: 2 / 2 / 3 / 3;
     z-index: 1;
     display: grid;
-    grid-template: 30px 1fr / 1fr;
+    grid-template: 40px 1fr / 1fr;
     gap: var(--edge-vb);
     box-sizing: border-box;
 
     prjs-bar {
-        border-radius:30px;
-    }
-    main-box {
-        border-radius: 5px;
-        box-sizing: border-box;
+        border-radius: 40px;
         padding: 5px;
 
-        &.no {
-            page-manager {
+        tab {
+            width: 200px;
+            height: 30px;
+            background: #cccfd6;
+            border-radius: 30px;
+            position: absolute;
+            display: flex;
+            transition: .2s;
+            cursor: pointer;
+            user-select: none;
+
+            > * {  transition: .25s  }
+            * > img {
+                width: 30px;
+                -webkit-user-drag: none;
+            }
+            tit {
+                font-family: system-ui;
+                line-height: 30px;
+                color: #333;
+                width: calc(100% - 40px);
+                mask-image: linear-gradient(90deg, #000 calc(100% - 10px), #0000);
+            }
+            close {
+                display: none;
+                position: absolute;
+                right: 0;
+                border-radius: 15px;
+                scale: 0.75;
+
+                img { scale: 1.25 }
+                &:hover {
+                    background: #bdbdbd;
+                }
+            }
+            &:hover {
+                close {
+                    display: block;
+                }
+                tit {
+                    width: calc(100% - 60px);
+                }
+            }
+            &::after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                background: #444;
+                position: absolute;
+                clip-path: path('M7 15 a 3 3 0 1 0 0 -0.01 m 10 0 a 3 3 0 1 0 0 -0.01 m 10 0 a 3 3 0 1 0 0 -0.01');
                 opacity: 0;
-                pointer-events: none;
+                transition: .25s;
+            }
+            &.min {
+                > * {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+            &.active {
+                background: #f8f8f8;
             }
         }
+
+    }
+    main-box {
+        border-radius: var(--br-r0);
+        box-sizing: border-box;
+        padding: 8px;
 
         page-manager {
             width: 100%;
@@ -27,20 +89,130 @@ body full-page view {
             background: #e1e4ed;
             opacity: 1;
             transition: .35s;
-            display: block;
             pointer-events: auto;
             z-index: 1;
-
-            > * {
-                position: absolute;
+            display: grid;
+            place-items: center;
+            mask-image: linear-gradient(0deg, #0000, #000 15px, #000 calc(100% - 15px), #0000);
+            show-limits {
+                mask-image: linear-gradient(90deg, #0000, #000 15px, #000 calc(100% - 15px), #0000);
                 width: 100%;
                 height: 100%;
-            }
-            draw-maker {
-                pointer-events: none;
-            }
-            page-view {
-                background: #fff;
+                display: grid;
+                place-items: center;
+
+                ratio-circle {
+                    display: grid;
+                    place-items: center;
+                    position: absolute;
+                    
+                    > * {
+                        position: absolute;
+                    }
+                    circle {
+                        width: calc(100% - 50px);
+                        height: calc(100% - 50px);
+                        border-radius: 50%;
+                        display: grid;
+                        place-items: center;
+                        grid-template: 1fr / 1fr;
+                        > * { grid-area: 1 / 1 / 2 / 2; }
+                        &.in {
+                            data-ratio {
+                                opacity: 0;
+                                pointer-events: none;
+                            }
+                        }
+
+                        data-ratio {
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                            height: 100%;
+                            opacity: 1;
+                            border: 2px solid var(--stlc0);
+                            border-radius: 50%;
+                            transition: .25s;
+                            z-index: 1;
+                            > * {
+                                position: absolute;
+                            }
+                            inch {
+                                top: 50%;
+                                width: 72%;
+                                height: 1px;
+                                background: repeating-linear-gradient(90deg, purple 0, purple 3%, #0000 3%, #0000 5%);
+                                z-index: 1;
+                                transition: .25s;
+                            }
+                            pointer {
+                                width: 0;
+                                height: 50%;
+                                transform-origin: 0% 100%;
+                                transform: translateY(-7px);
+
+                                selector {
+                                    width: 5px;
+                                    height: 10px;
+                                    svg {
+                                        width: 5px;
+                                        height: 10px;
+                                        fill: var(--stlc0);
+                                        path {
+                                            d: path("M1 3 a 1 1 0 0 1 2 0 v 6 a 1 1 0 0 1 -2 0 z")
+                                        }
+                                    }
+                                }
+                                &.lim svg {
+                                    fill: #a24aff;
+                                }
+                            }
+                        }
+                        main-view {
+                            display: grid;
+                            place-items: center;
+                            width: 0;
+                            height: 0;
+                            transition: .3s;
+
+                            limit-0 {
+                                width: calc(100% + 40px);
+                                height: calc(100% + 40px);
+                                mask-image: linear-gradient(0, #0000, #000 20px, #000 calc(100% - 20px), #0000);
+
+                                limit-1 {
+                                    width: 100%;
+                                    height: 100%;
+                                    mask-image: linear-gradient(90deg, #0000, #000 10px, #000 calc(100% - 10px), #0000);
+                                    
+                                    stable {
+                                        width: calc(100% - 40px);
+                                        height: calc(100% - 40px);;
+                                        top: 20px;
+                                        left: 20px;
+                                        > * {
+                                            width: 100%;
+                                            height: 100%;
+                                            position: absolute;
+                                        }
+    
+                                        drawer {
+                                            box-shadow: 0 0 0 2px var(--stlc0);
+                                        }
+                                        page-view {
+                                            background: #fff;
+                                            overflow: hidden;
+                            
+                                            empty {
+                                                background: #79d0e8;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         add-block-btn {

@@ -32,6 +32,13 @@ let engine = new class Engine {
      */
     static elems = new Map;
 
+    static pages = new Map;
+
+    static data = {};
+
+    static prop = new Map;
+
+    static None = Symbol ( "None" );
 
     constructor () {
         this.builder = new Engine.Builder;
@@ -95,4 +102,56 @@ let engine = new class Engine {
     remElem ( name ) {
         return Engine.elems.delete ( name );
     }
+
+    newPage ( id, data ) {
+        Engine.pages.set ( id, data );
+    }
+    setData ( type, key, value = Engine.None ) {
+        if ( typeof type != "string" ) {
+            throw "type must be string.";
+        }
+        if ( Engine.data [ type ] == null )
+            Engine.data [ type ] = new Map;
+        if ( value != Engine.None )
+            Engine.data [ type ].set ( key, value );
+    }
+    getData ( type, key = Engine.None ) {
+        if ( type == undefined ) return Engine.data;
+        if ( typeof type != "string" ) {
+            throw "type must be string.";
+        }
+        if ( Engine.data [ type ] ) {
+            if ( key != Engine.None ) {
+                return Engine.data [ type ].get ( key );
+            }
+            else {
+                return Engine.data [ type ];
+            }
+        }
+
+    }
+    remData ( type, key = Engine.None ) { 
+        if ( typeof type != "string" ) {
+            throw "type must be string.";
+        }
+        if ( key == Engine.None ) {
+            return delete Engine.data [ type ];
+        }
+        else if ( Engine.data [ type ] ) {
+            return Engine.data [ type ].delete ( key );
+        }
+    }
+    setProp ( key, value ) {
+        Engine.prop.set ( key, value );
+    }
+    getProp ( key = Engine.None ) {
+        if ( key === Engine.None ) {
+            return Engine.prop;
+        }
+        return Engine.prop.get ( key );
+    }
+    remProp ( key ) {
+        return Engine.prop.delete ( key );
+    }
+
 }

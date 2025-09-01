@@ -5,7 +5,8 @@ let zro_map = new Map,
         obxs.forEach ( obs => {
             ( siz_map.get ( obs.target ) || [] ).forEach ( fn => fn( obs, obse ) );
         } );
-    } );
+    } ),
+    ZOOM_0 = false;
 /**
  * 
  * @param  {...any} elements 
@@ -24,6 +25,10 @@ class Zero extends Set {
         constructor ( ...props ) {
             this.props = [ ...new Set ( props ) ]
         }
+    }
+
+    static get canZoom () {
+        return ZOOM_0;
     }
 
 
@@ -130,6 +135,16 @@ class Zero extends Set {
             siz_obs.observe ( el );
         } );
     }
+    static onzoom ( elems, fn ) {
+        elems.forEach ( ( el, i ) => {
+            el.addEventListener ( 'wheel',ev => {
+                if ( !ZOOM_0 && ev.ctrlKey ) {
+                    fn ( ev, el, i );
+                }
+            }, { passive: false } );
+        } );
+
+    }
 
     constructor ( elements = [], zero ) {
         super ();
@@ -162,7 +177,7 @@ class Zero extends Set {
      * @returns {Array<any>}
      */
     loop ( fn, def ) {
-        let res = Base.tp ( def, "arrr" ) ? def : [];
+        let res = Base.tp ( def, "arr" ) ? def : [];
         for ( const element of this ) {
             res.push ( fn.call ( this, element, res.length, res ) );
         }
@@ -330,9 +345,19 @@ class Zero extends Set {
             if ( evv === "resize" && this.free [ 0 ] !== window ) {
                 Zero.onresize ( this, fn );
             }
-            this.each ( ( e, i ) => { 
-                e.addEventListener ( evv, ev => fn.call ( this, ev, e, i ), ...options );
-            } )
+            else if ( evv === "zoom" ) {
+                Zero.onzoom ( this, fn );
+            }
+            else if ( evv === "wheel" ) {
+                this.each ( ( e, i ) => { 
+                    e.addEventListener ( evv, ev => fn.call ( this, ev, e, i ), { passive: false } );
+                } );
+            }
+            else {
+                this.each ( ( e, i ) => { 
+                    e.addEventListener ( evv, ev => fn.call ( this, ev, e, i ), ...options );
+                } );
+            }
         } );
         return this;
     }
@@ -469,7 +494,7 @@ zro.b = zro ( "body" );
 Base.ice ( zro, {
     b: zro.b,
     h: zro.h,
-    d: zro.h,
+    d: zro.d,
     win: zro.win,
     simulation ( dcmt ) {
         let _ = zro,
@@ -515,3 +540,9 @@ Base.ice ( zro, {
         } ); // zro.batch will send: { type: "batch", [ { type: "send", id: #ID, way: a, data: b }, { type: "get", id: #ID, way: a } ]}
     */
 } );
+zro.win.on ( "keydown", ev => {
+    ZOOM_0 = ev.key != "Control";
+} ).on ( "keyup", ev => {
+    ZOOM_0 = false;
+});
+

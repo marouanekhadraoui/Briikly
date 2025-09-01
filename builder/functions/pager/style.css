@@ -17,9 +17,10 @@ body > functions > pager {
             overflow: visible;
         }
         controls {
-            top: 25px;
+            top: 40px;
             up-dn {
                 opacity: 1;
+                pointer-events: auto;
             }
         }
     }
@@ -53,9 +54,12 @@ body > functions > pager {
             width: 80%;
             user-select: none;
             -webkit-user-drag: none;
-            cursor: context-menu;               
+            cursor: context-menu;
+            line-height: 50px;
         }
         set-name {
+            width: 200px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,6 +110,7 @@ body > functions > pager {
                     padding: 3px;
                     box-sizing: border-box;
                     transition: .25s;
+                    cursor: pointer;
 
                     cir {
                         width: 20px;
@@ -229,6 +234,19 @@ body > functions > pager {
                 border-radius: 20px;
                 background: #fff3;
                 cursor: pointer;
+                -webkit-user-drag: none;
+                display: grid;
+                place-items: center;
+                img {
+                    width: 25px;
+                }
+
+                &.inactive {
+                    cursor: context-menu;
+                    * {
+                        filter: contrast(0.4);
+                    }
+                }
             }
         }
         up-dn {

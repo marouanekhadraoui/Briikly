@@ -4,8 +4,8 @@ function base ( any ) {
 
 let baseMe = new Map ();
 class Base {
-    static ice ( item, o ) {
-        return functions.set.ice ( item, o );
+    static ice ( item, o, deep ) {
+        return functions.set.ice ( item, o, deep );
     }
     static optc ( item, ...p ) {
         return functions.set.optc ( item, p );
@@ -1747,9 +1747,16 @@ functions = {
                 fn = fn.bind ( thisArg );
             }
             let i = 0;
-            if ( Array.isArray ( item ) || typeof item == "string" ) {
+            if ( typeof item == "string" ) {
+                let r = [];
+                for ( e of item ) {
+                    r [ i ] = fn ( e, i++, item, help );
+                }
+                return r.join ( "" );
+            }
+            else if ( Array.isArray ( item ) ) {
                 let res = item.map ( ( e, i ) => fn ( e, i, item, help ) );
-                return typeof item == "string" ?  res.join ( "" ) : res;
+                return res;
             }
             else if ( item instanceof Set ) {
                 let res = new Set ();
@@ -2252,19 +2259,26 @@ functions = {
     },
 
     cpt: {
-        genID ( len = 7, [ from, to ] = [ 55, 55 ], { not } = {} ) {
-            if ( !functions.ver.aretp ( [ len, from, to ], [ "int" ] ) ) {
+        genID ( len = 7, fromto = [ 55, 55 ], { not } = {} ) {
+            if ( !functions.ver.tp ( len, [ "int" ] ) ) {
                 throw TypeError ( "Unvalid type." );
             }
-            if ( from === to ) {
-                return String.fromCharCode ( from ).repeat ( len );
+            let alf = [];
+            for ( let i = 0; i < fromto.length; i += 2 ) {
+                const from = fromto [ i ];
+                const to = fromto[i + 1];
+
+                if ( typeof from === "number" && typeof to === "number" ) {
+                    for ( let j = from; j <= to; j++ ) {
+                        alf.push ( j );
+                    }
+                }
             }
-            if ( from > to ) [ from, to ] = [ to, from ];
             let res = "",
-                ALFA = ( i ) => String.fromCharCode ( i + from );
+                ALFA = ( i ) => String.fromCharCode ( alf [ i ] );
             cryp = crypto.getRandomValues ( new Uint32Array ( len ) );
             for ( let i = 0; i < len; i++ ) {
-                res += ALFA ( cryp [ i ] % ( to - from ) );
+                res += ALFA ( cryp [ i ] % ( alf.length ) );
             }
         
             if ( !Array.isArray ( not ) ) not = [ not ];

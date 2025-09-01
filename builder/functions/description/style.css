@@ -4,10 +4,42 @@ body functions description {
     position: absolute;
     z-index: 1000;
     pointer-events: none;
+
     > * {
         position: absolute;
     }
-    def-tool {
+    def0 {
+        width: 220px;
+        left: 65px;
+        overflow: hidden;
+        color: #fff;
+        font-size: 17px;
+        background: linear-gradient(279deg, #00000040, #2684745e);
+        font-family: system-ui;
+        padding: 5px;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+        transition: .25s;
+        pointer-events: auto;
+        max-height: 200px;
+        
+        tit {
+            width: 100%;
+            text-align: center;
+        }
+        line {
+            width: 80%;
+            height: .2px;
+            background: #fff;
+            margin: 10px;
+        }
+        &.close {
+            height: 25px;
+            pointer-events: none;
+        }
+    }
+
+    /* def-tool {
         left: 70px;
         width: 200px;
         max-height: 170px;
@@ -44,5 +76,5 @@ body functions description {
             overflow: hidden;
             max-height: 20px;
         }
-    }
+    } */
 }
